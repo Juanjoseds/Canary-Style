@@ -2,18 +2,18 @@
 <h1>Login</h1>
 
 <% @users.each do |usuario| %>
-  <h3><%= usuario.username %></h3>
-  <h3><%= usuario.password %></h3>
+  <p><%= usuario.username + " " + usuario.password %></p>
 <% end %>
+
 
 <%= form_for @user do |f| %>
 
-    <%= f.label :username %>
+    Usuario:
     <%= f.text_field :username %>
-
-    <%= f.label :password %>
+    Contraseña:
     <%= f.password_field :password %>
-    <%= f.submit %>
+
+    <%= f.submit "Log In" %>
 
 <% end %>
 
