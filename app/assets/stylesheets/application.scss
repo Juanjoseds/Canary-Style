@@ -213,7 +213,107 @@ body{
   margin: 100px auto;
 }
 
-//FIN-MODAL
+.avatarnav{
+  margin-right: 4px;
+}
+
+//CARRUSEL
+
+
+.carousel-caption{
+  font-family: 'Merienda One', sans-serif;
+  text-shadow: -1px -1px 1px rgba(255,255,255,.1), 2px 2px 2px rgba(0,0,0,.5);
+}
+
+.carousel-caption > h5{
+  font-size: 20px;
+}
+
+.carousel-caption > p{
+  font-size: 16px;
+}
+
+//IMAGEN HOMBRE-MUJER
+
+.img-hombre-mujer{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.img-fluid {
+  height: 95%;
+  width: 100%;
+}
+
+.imghombre{
+  cursor: pointer;
+  transition-duration: 1s;
+}
+
+.imghombre:hover, .imgmujer:hover{
+  -webkit-box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.35);
+  -moz-box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.35);
+  box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.35);
+}
+
+.imgmujer{
+  cursor: pointer;
+  transition-duration: 1s;
+}
+
+.imgtext{
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: White;
+  font-family: 'Merienda One', sans-serif;
+  font-size: 40px;
+
+  color: White;
+  text-shadow: -1px -1px 1px rgba(255,255,255,.1), 2px 2px 2px rgba(0,0,0,.5);
+}
+
+.textOver{
+  position: relative;
+  text-align: center;
+}
+
+//TEXTO BIENVENIDA
+.card-image{
+  background-position: center;
+}
+
+.blackbackground{
+  position: absolute;
+  background-color: black;
+  z-index:1;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+}
+
+.jumbocontent{
+  z-index: 2;
+}
+
+// FOOTER
+
+.footercontent, .jumbowelcome{
+  text-align: center;
+}
+
+.footercontent > h3{
+  font-family: 'Merienda One', sans-serif;
+}
+
+.footercontent > p{
+  font-family: 'Quicksand', sans-serif;
+}
+
+.footerhr{
+  width: 80%;
+}
 
 
 

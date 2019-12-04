@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/users/new', to: 'users#new' # users_new_path
   post '/:username', to: 'users#login', as: 'login'
   get '/users/login/:username', to: 'users#login'
+  get '/users/logout', to: 'users#logout', as: 'logout'
 
   # resources :products
   # resources :users

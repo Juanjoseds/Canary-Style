@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
 
   def login
-    # @user = User.find(user_params)
     @user = params[:user]["username"]
     @password = params[:user]["password"]
 
@@ -17,20 +16,29 @@ class UsersController < ApplicationController
     @db_user = @db["username"]
     @db_password = @db["password"]
     @db_id = @db["id"]
+    @db_name = @db["name"]
 
     if @user == @db_user && @password == @db_password
       session[:username] = @db_user
       session[:userid] = @db_id
+      session[:name] = @db_name
     end
 
     puts '-----------SESSION-------------------'
-    puts session[:userid]
+    puts session[:name]
     puts '-------------------------------------'
     puts @user + " " + @password
     puts @db["username"]
     # puts user_params
     puts '-------------------------------------'
       redirect_to main_path
+  end
+
+  def logout
+    session[:username] = nil
+    session[:userid] = nil
+    puts '-------------LOGOUT------------------'
+    redirect_to main_path
   end
 
 end
