@@ -35,6 +35,22 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def novedades
+    @users = User.all
+    @user = User.new
+  end
+
+  def hombre
+    @users = User.all
+    @user = User.new
+    @products = Product.all
+  end
+
+  def mujer
+    @users = User.all
+    @user = User.new
+  end
+
   private
 
   def product_params

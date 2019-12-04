@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get '/users/login/:username', to: 'users#login'
   get '/users/logout', to: 'users#logout', as: 'logout'
 
+  get '/products/novedades', to: 'products#novedades', as: 'novedades'
+  get '/products/hombre', to: 'products#hombre', as: 'hombre'
+
+
   # resources :products
   # resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

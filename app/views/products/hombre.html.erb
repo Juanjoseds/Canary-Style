@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="mt-4 mainproductos">
+    <div id="productos">
+
+      <% @products.each do |product| %>
+        <% if product.genero == 0 %>
+          <a href="" class="enlace">
+          <div class="card productcard" style="width: 18rem;">
+            <img class="card-img-top" src="<%= product.image %>" alt="Card image cap">
+            <div class="card-body cardpadding">
+              <h5 class="card-title"><%= product.name %></h5>
+              <div class="color">
+                <div class="cuadrado" style="background-color: rgb(<%= product.rgb %>);"></div>
+                <p class="card-text"><%= product.color %></p>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"></li>
+            </ul>
+            <% if product.offer != 0
+                 @discount = product.price - (product.price * (product.offer/100.00)) %>
+                <div class="card-body price discount"><%= @discount.round(2) %> €<h5><span class="badge badge-secondary offerbadge">-<%= product.offer %>%</span></h5><div class="car-body exprice"><%= product.price.round(2) %> €</div></div>
+               <% else %>
+                    <div class="card-body price"><%= product.price %> €</div>
+               <% end %>
+
+          </div>
+        <% end %>
+      <% end %>
+      </a>
+    </div>
+  </div>
+</div>
