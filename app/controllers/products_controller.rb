@@ -16,6 +16,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show
+    @users = User.all
+    @user = User.new
+    @product = Product.find(params[:id])
+    render :show
+  end
+
   def edit
     @product = Product.find(params[:id])
   end
@@ -38,6 +45,7 @@ class ProductsController < ApplicationController
   def novedades
     @users = User.all
     @user = User.new
+    @products = Product.all
   end
 
   def hombre
@@ -49,6 +57,7 @@ class ProductsController < ApplicationController
   def mujer
     @users = User.all
     @user = User.new
+    @products = Product.all
   end
 
   private

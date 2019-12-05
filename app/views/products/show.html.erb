@@ -1,0 +1,88 @@
+<%
+  # LÓGICA DE PRECIOS
+  @offer = false
+  @decimales = false
+  if @product.offer != 0
+     # SI ES UN ARTICULO EN DESCUENTO...
+      @offer = true
+     @discount = @product.price - (@product.price * (@product.offer/100.00))
+     @aux = @discount.to_i.to_s + ".0"
+
+     if @aux == @discount.to_s
+       @precio = @discount.to_i
+       @decimales = false
+     else
+       @precio = @discount.round(2)
+       @decimales = true
+     end
+  else
+     # SI NO ESTÁ EM DESCUENTO...
+     @aux = @product.price.to_i.to_s + ".0"
+     if @aux == @product.price.to_s
+       @precio = @product.price.to_i
+     else
+         @precio = @product.price.round(2)
+     end
+  end %>
+
+<div class="container-fluid mt-4 mb-4 gridproduct">
+  <div class="imgProduct"><img src="<%= @product.image %>" alt="Imagen de producto" class="imgProduct"></div>
+  <div class="mainInfo">
+    <div class="title"><p><%= @product.name %></div>
+
+      <% if @offer == true %>
+        <div class="price discountProductView<% if @decimales==false %> ofertaSINDECIMAL<% end %>">
+        <!-- Precio con el descuento -->
+        <p><%= @precio %> €</p>
+        <!-- Porcentaje del descuento -->
+        <h5><span class="badge badge-secondary offerbadge offerbadgePV">-<%= @product.offer %>%</span></h5>
+        <!-- Precio antes del descuento -->
+        <p class="expricePV"><%= @product.price %> €</p>
+        </div>
+      <% else %>
+        <div class="price priceintegerProductView">
+        <p><%= @precio %> € </p>
+        </div>
+      <div class="color">
+        <div class="cuadrado" style="background-color: rgb(<%= @product.rgb %>);"></div>
+        <p class="card-text"><%= @product.color %></p>
+      </div>
+      <hr class="linea">
+      <% end %>
+
+    <% if @offer == true %>
+      <div class="color">
+        <div class="cuadrado" style="background-color: rgb(<%= @product.rgb %>);"></div>
+        <p class="card-text"><%= @product.color %></p>
+      </div>
+      <hr class="linea">
+      <!-- ALERTA -->
+      <div class="alert alert-warning alert-dismissible fade show alertPV" role="alert">
+        <strong>¡Caramba!</strong> Este artículo está de oferta durante poco tiempo, ¡aprovecha la oportunidad!
+      </div>
+    <% end %>
+    <p class="talla"><i class="fas fa-ruler"></i> Tallaje disponible</p>
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <% @product.talla.each do |tallaje| %>
+        <button type="button" class="btn btn-secondary"><%= tallaje %></button>
+      <% end %>
+    </div>
+
+    <br><div class="tutalla"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ¡Tenemos tu talla! (Implementar)</div>
+    <!-- BOTON CARRITO -->
+    <%= button_to "Añadir al carrito", { action: "carritoadd", controller: "users" }, class: "btn btn-outline-success btncarrito" %>
+
+    <hr class="linea">
+
+    <p class="talla"><i class="fa fa-book"></i> Descripción </p>
+    <section class="textPV"><%= @product.description %></section>
+
+    <hr class="linea">
+    <p class="talla"><i class="fas fa-undo"></i> Devoluciones</p>
+    <section class="textPV">Devoluciones <strong>gratuitas</strong> antes de 30 días.</section>
+
+
+
+  </div>
+</div>

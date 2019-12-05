@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get '/products/novedades', to: 'products#novedades', as: 'novedades'
   get '/products/hombre', to: 'products#hombre', as: 'hombre'
+  get '/products/mujer', to: 'products#mujer', as: 'mujer'
+  post '/users/:id/carritoadd', to: 'users#carritoadd'
 
 
   # resources :products

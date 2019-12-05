@@ -22,6 +22,7 @@ class UsersController < ApplicationController
       session[:username] = @db_user
       session[:userid] = @db_id
       session[:name] = @db_name
+      session[:cart] ||= []
     end
 
     puts '-----------SESSION-------------------'
@@ -37,8 +38,18 @@ class UsersController < ApplicationController
   def logout
     session[:username] = nil
     session[:userid] = nil
-    puts '-------------LOGOUT------------------'
+    session[:cart] = nil
+    print session[:cart]
     redirect_to main_path
+  end
+
+  # ALMACENAMOS EN SESSION LOS ELEMENTOS QUE HA AÑADIDO EL USUARIO
+  def carritoadd
+    session[:cart].push(params[:id])
+
+    #DEBUG
+    puts '-------SE HA AÑADIDO AL CARRITO------------'
+    print session[:cart]
   end
 
 end

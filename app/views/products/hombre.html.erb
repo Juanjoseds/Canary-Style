@@ -4,7 +4,7 @@
 
       <% @products.each do |product| %>
         <% if product.genero == 0 %>
-          <a href="" class="enlace">
+          <a href="/product/<%= product.id %>" class="enlace">
           <div class="card productcard" style="width: 18rem;">
             <img class="card-img-top" src="<%= product.image %>" alt="Card image cap">
             <div class="card-body cardpadding">
@@ -19,11 +19,20 @@
             </ul>
             <% if product.offer != 0
                  @discount = product.price - (product.price * (product.offer/100.00)) %>
-                <div class="card-body price discount"><%= @discount.round(2) %> €<h5><span class="badge badge-secondary offerbadge">-<%= product.offer %>%</span></h5><div class="car-body exprice"><%= product.price.round(2) %> €</div></div>
+                <% @aux = @discount.to_i.to_s + ".0"
+                   if @aux == @discount.to_s %>
+                    <div class="card-body price discount priceinteger"><%= @discount.to_i %> €<h5><span class="badge badge-secondary offerbadge">-<%= product.offer %>%</span></h5><div class="car-body exprice"><%= product.price.to_i %> €</div></div>
+                  <% else %>
+                    <div class="card-body price discount"><%= @discount.round(2) %> €<h5><span class="badge badge-secondary offerbadge">-<%= product.offer %>%</span></h5><div class="car-body exprice"><%= product.price.round(2)%> €</div></div>
+                  <% end %>
                <% else %>
-                    <div class="card-body price"><%= product.price %> €</div>
-               <% end %>
-
+                    <% @price = product.price.to_i.to_s + ".0"
+                       if @price == product.price.to_s %>
+                        <div class="card-body price"><%= product.price.to_i %> €</div>
+                    <% else %>
+                    <div class="card-body price"><%= product.price.round(2) %> €</div>
+                    <% end %>
+              <% end %>
           </div>
         <% end %>
       <% end %>
