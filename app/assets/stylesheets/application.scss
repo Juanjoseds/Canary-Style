@@ -424,6 +424,13 @@ body{
 }
 
 // PRODUCT VIEW
+
+#myToast{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
 .gridproduct{
   width: 100%;
   display: grid;
@@ -437,10 +444,6 @@ body{
 
 .imgProduct, .mainInfo{
   width: 95%;
-}
-
-.mainInfo{
-
 }
 
 .discountProductView{
@@ -502,7 +505,7 @@ body{
 }
 
 .tutalla{
-  margin-top: 5px;
+  margin-top: 10px;
   font-weight: bold;
   color: green;
 }
@@ -517,9 +520,97 @@ body{
   margin-top: 10px;
 }
 
-.carritoIconPV{
-  margin-right: 5px;
+.bs-example{
+  margin: 20px;
+  position: relative;
 }
+
+// Cart View
+.centerCart{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+  text-align: center;
+}
+
+.shopbag{
+  color: gainsboro;
+}
+
+.centerCart > p {
+  margin-top: 1em;
+  color: Gray;
+  font-size: 18px;
+  font-family: 'Quicksand', sans-serif;
+
+}
+
+// CESTA
+
+.titleCesta{
+  color: Gray;
+  font-size: 25px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+}
+
+.cartImage{
+  width: auto;
+  height: 100px;
+  justify-content: center;
+}
+
+.gridtd{
+  display: grid;
+  grid-template-columns: 55px 60px auto;
+  margin-top: 1em;
+}
+
+.gridtd > h5{
+  margin-left: 4px;
+  padding: 0;
+}
+
+.gridtd > p{
+  padding: 0;
+}
+
+.pricefix{
+  margin-top: 3px !important;
+}
+
+.productCesta{
+  display: grid;
+  grid-template-columns: 40% 40%;
+}
+
+.contentcesta{
+  margin-top: 1em;
+}
+
+.tallaCart{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.borrarCart{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.indexCart{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* WIDTH */
 @media only screen and (min-width: 300px){

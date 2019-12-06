@@ -60,6 +60,11 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def talla
+    session[:talla] = params[:talla]
+    puts '-------talla------'
+    print session[:talla]
+  end
   private
 
   def product_params

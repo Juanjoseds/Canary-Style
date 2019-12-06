@@ -25,6 +25,19 @@
      end
   end %>
 
+<div class="toast" id="myToast" data-delay="5000">
+  <div class="toast-header">
+    <strong class="mr-auto"><i class="fa fa-grav"></i> Añadido al carrito</strong>
+    <small>Ahora</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    <div>Se ha añadido <strong><%= @product.name %></strong> al carrito</div>
+  </div>
+</div>
+
 <div class="container-fluid mt-4 mb-4 gridproduct">
   <div class="imgProduct"><img src="<%= @product.image %>" alt="Imagen de producto" class="imgProduct"></div>
   <div class="mainInfo">
@@ -65,13 +78,31 @@
 
     <div class="btn-group" role="group" aria-label="Basic example">
       <% @product.talla.each do |tallaje| %>
-        <button type="button" class="btn btn-secondary"><%= tallaje %></button>
+        <%= button_to tallaje, savetalla_path, method: :post, params: {talla: tallaje} %>
       <% end %>
     </div>
 
-    <br><div class="tutalla"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ¡Tenemos tu talla! (Implementar)</div>
+    <% @product.talla.each do |tallaje| %>
+      <% # CAMISETAS, ABRIGOS, CAZADORAS...
+         @type = @product.product_type
+         if @type == 1
+           if session[:talla_camiseta] == tallaje %>
+          <br><div class="tutalla"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ¡Tu talla <%= tallaje %> está disponible en este artículo! </div>
+          <% end %>
+         <% # JOGGINS Y PANTALONES DE CHANDALS
+           elsif @type == 2
+             if session[:talla_chandal] == tallaje %>
+          <br><div class="tutalla"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ¡Tu talla <%= tallaje %> está disponible en este artículo! </div>
+          <% end %>
+        <% elsif @type == 3
+             if session[:talla_pantalon] == tallaje %>
+          <br><div class="tutalla"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ¡Tu talla <%= tallaje %> está disponible en este artículo! </div>
+            <% end %>
+      <% end %>
+      <% end %>
+
     <!-- BOTON CARRITO -->
-    <%= button_to "Añadir al carrito", { action: "carritoadd", controller: "users" }, class: "btn btn-outline-success btncarrito" %>
+    <%= button_to "Añadir al carrito", { action: "carritoadd", controller: "users" }, class: "btn btn-outline-success btncarrito show-toast" %>
 
     <hr class="linea">
 
@@ -81,8 +112,6 @@
     <hr class="linea">
     <p class="talla"><i class="fas fa-undo"></i> Devoluciones</p>
     <section class="textPV">Devoluciones <strong>gratuitas</strong> antes de 30 días.</section>
-
-
-
   </div>
 </div>
+

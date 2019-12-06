@@ -1,0 +1,86 @@
+
+<%
+  @index = 0
+  @cartItems = 0
+  if session[:userid] != nil
+  session[:cart].each do |carrito|
+    @cartItems = @cartItems +1
+  end
+  end %>
+
+  <% if @cartItems == 0%>
+
+  <div class="centerCart">
+    <i class="fa fa-shopping-bag fa-5x shopbag" aria-hidden="true"></i>
+    <p>No tienes nada aún en la cesta</p>
+  </div>
+
+  <% else %>
+  <div class="titleCesta ml-4 mt-3"><p>Artículos en el carrito</p></div>
+  <div class="productCesta ml-4 mr-4" >
+    <div>
+    <table class="table table-hover table-sm" >
+      <tbody>
+      <% session[:cart].each do |id| %>
+          <% @product = Product.where(id: id).take %>
+      <%
+        # LÓGICA DE PRECIOS
+        @offer = false
+        @decimales = false
+        if @product.offer != 0
+          # SI ES UN ARTICULO EN DESCUENTO...
+          @offer = true
+          @discount = @product.price - (@product.price * (@product.offer/100.00))
+          @aux = @discount.to_i.to_s + ".0"
+
+          if @aux == @discount.to_s
+            @precio = @discount.to_i
+            @decimales = false
+          else
+            @precio = @discount.round(2)
+            @decimales = true
+          end
+        else
+          # SI NO ESTÁ EM DESCUENTO...
+          @aux = @product.price.to_i.to_s + ".0"
+          if @aux == @product.price.to_s
+            @precio = @product.price.to_i
+          else
+            @precio = @product.price.round(2)
+          end
+        end %>
+
+        <tr style="height: 100px;">
+          <td style="width: 5px!important;"><p class="indexCart"><%= @index+1 %></p></td>
+          <td style="width: 100px!important;"><img class="cartImage" src="<%= @product.image %>" alt="Imagen del producto"></td>
+          <td style="width: 200px">
+            <div class="contentcesta">
+              <section><%= @product.name %></section>
+              <% if @product.offer != 0 %>
+              <div class="gridtd">
+                <p class="pricefix"><%= @precio %> €</p>
+                <h5><span class="badge badge-secondary">-<%= @product.offer %> %</span></h5>
+                <p class="expricePV pricefix" style="color: darkred"><%= @product.price %> €</p>
+              </div>
+              <% else %>
+                <p class="pricefix"><%= @precio %> €</p>
+                <% end %>
+            </div>
+          <td style="height: 100%"><p class="tallaCart">Talla:&nbsp;&nbsp;<strong><%= session[:tallacesta][@index] %></strong></p></td>
+          <td style="width: 120px"><section class="borrarCart"><a class="btn btn-danger" href='/users/deletecarrito/<%= @index %>'><i class="fa fa-trash-o fa-lg"></i> Borrar</a></section></td>
+        </tr>
+  <% @index = @index +1
+    end %>
+      </tbody>
+    </table>
+    </div>
+
+    <div>
+      <p>Tonta si lees esto jaja</p>
+    </div>
+  </div>
+
+<% end %>
+
+
+

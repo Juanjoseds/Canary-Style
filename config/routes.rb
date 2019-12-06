@@ -17,11 +17,15 @@ Rails.application.routes.draw do
   post '/:username', to: 'users#login', as: 'login'
   get '/users/login/:username', to: 'users#login'
   get '/users/logout', to: 'users#logout', as: 'logout'
+  get '/user/cesta', to: 'users#cesta', as: 'cesta'
+  post '/users/:id/carritoadd', to: 'users#carritoadd'
+
 
   get '/products/novedades', to: 'products#novedades', as: 'novedades'
   get '/products/hombre', to: 'products#hombre', as: 'hombre'
   get '/products/mujer', to: 'products#mujer', as: 'mujer'
-  post '/users/:id/carritoadd', to: 'users#carritoadd'
+  post 'products/:id/talla', to: 'products#talla', as: 'savetalla'
+  get 'users/deletecarrito/:index', to: 'users#deletecarrito'
 
 
   # resources :products
