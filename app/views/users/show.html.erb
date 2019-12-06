@@ -1,31 +1,95 @@
+<%
+  if session[:option] == 1
+    @active1 = 'activeoption'
+    @active2 = ''
+    @active3 = ''
+  elsif session[:option] == 2
+    @active1 = ''
+    @active2 = 'activeoption'
+    @active3 = ''
+  elsif session[:option] == 3
+    @active1 = ''
+    @active2 = ''
+    @active3 = 'activeoption'
+  end
+%>
 <div class="mainUser">
   <div class="alluserinfo">
     <div class="gridUser">
-      <div class="section1">
+      <div class="section1">  <!-- SECTION 1 -->
         <p class="titleProfile"> Perfil </p>
+
         <div class="card">
           <div class="card-header">
             <i class="fas fa-cog"></i> Opciones
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item active">Ver</li>
-            <li class="list-group-item">Editar</li>
-            <li class="list-group-item">¿Borrar?</li>
+          <ul class="list-group list-group-flush" style="cursor: pointer;">
+            <li class="list-group-item options <%= @active1 %>" onclick="window.location.href='/users/option1'">Ver</li>
+            <li class="list-group-item options <%= @active2 %>" onclick="window.location.href='/users/option2'">Editar</li>
+            <li class="list-group-item options <%= @active3 %>" onclick="window.location.href='/users/option3'">¿Borrar?</li>
           </ul>
-
         </div>
+        <div class="card mt-3">
+          <div class="card-header">
+            <i class="fas fa-tachometer-alt"></i> Actividad
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Compras online:</strong> 5</li>
+          </ul>
+        </div>
+
       </div>
-      <div class="section2 ml-3">
+      <div class="section2 ml-3"> <!-- SECTION 2 -->
+        <% if session[:option] == 1 %>
         <div class="card">
           <div class="card-header">
-            Featured
+            <i class="fas fa-address-card"></i> Tus datos personales
           </div>
           <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">Tus datos</h5>
+            <p class="card-text cardtextuser">
+              Solo almacenamos datos que son estrictamente necesarios para identificarle y poder procesar las compras.
+              Procura que tus datos estén actualizados en todo momento, para ofrecerte el mejor servicio posible.
+            </p>
+            <hr>
+            <p><strong>Nombre:</strong> <%= session[:name] %></p>
+            <p><strong>Usuario:</strong> <%= session[:username] %></p>
+            <p><strong>Dirección:</strong> <%= session[:direccion] %></p>
+            <p><strong>Ciudad:</strong> <%= session[:ciudad] %></p>
+            <p><strong>País:</strong> <%= session[:pais] %></p>
+            <p><strong>Teléfono:</strong> <%= session[:phone] %></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">¿Ves algo incorrecto? Haz clic en editar para modificarlo</small>
           </div>
         </div>
+        <div class="card mt-2">
+          <div class="card-header">
+            <i class="fas fa-user-lock"></i> Tratamiento de los datos
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">¿Por qué recopilamos estos datos?</h5>
+            <div class="alert alert-info" role="alert">
+              <i class="fas fa-info-circle"></i> Es importante que entiendas este apartado
+            </div>
+            <p class="card-text">
+              En Canary Style no comercializamos tus datos con terceros ni similares.
+              Tus datos solo se emplearán para la identificación del usuario dentro de la plataforma y
+              sobre todo, para cuando se haga un envío a domicilio.
+            </p>
+
+            <p class="card-text">
+              Cada vez que cierras sesión en la plataforma online, se borrarán todas las cookies que están asociadas
+              a tu cuenta, cuya finalidad es brindarte un mejor servicio y hace capaz que podamos interactuar de forma
+              más cercana con el cliente.
+            </p>
+
+
+          </div>
+        </div>
+          <% elsif session[:option] == 2 %>
+          pussy
+        <% end %>
       </div>
     </div>
   </div>

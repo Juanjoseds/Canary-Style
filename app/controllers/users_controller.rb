@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     index
-
+    session[:uservista] = 0
   end
 
   def login
@@ -68,7 +68,21 @@ class UsersController < ApplicationController
 
   def cesta
     index
+  end
 
+  def option1
+    session[:option] = 1
+    redirect_to request.referer.present? ? request.referer : default_path
+  end
+
+  def option2
+    session[:option] = 2
+    redirect_to request.referer.present? ? request.referer : default_path
+  end
+
+  def option3
+    session[:option] = 3
+    redirect_to request.referer.present? ? request.referer : default_path
   end
 
 end

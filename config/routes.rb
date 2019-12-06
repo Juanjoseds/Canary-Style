@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   get '/user', to: 'users#show', as: 'userview'
   get 'products/buy', to: 'products#buy'
   post 'products/buy', to: 'products#buy'
+  get '/users/option1', to: 'users#option1'
+  get '/users/option2', to: 'users#option2'
+  get '/users/option3', to: 'users#option3'
 
 
   # resources :products

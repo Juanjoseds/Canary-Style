@@ -677,15 +677,15 @@ footer{
 }
 
 // USER PROFILE
+.mainUser{
+  width: 50%;         //IMPORTANTE MEDIAQUERY
+  margin-left: auto;
+  margin-right: auto;
+}
 .titleProfile{
   font-family: 'Quicksand', sans-serif;
   font-size: 30px;
   margin-top: 30px;
-}
-
-.alluserinfo{
-  display: flex;
-  justify-content: center;
 }
 
 .gridUser{
@@ -695,8 +695,36 @@ footer{
 
 .section2{
   margin-top: 20px;
+  width: 40em;
 }
 
+.activeoption{
+  background-color: #eaeaec;
+  font-weight: bold;
+}
+
+.options:hover{
+  background-color: gainsboro;
+}
+
+.cardtextuser{
+  text-justify: inter-word;
+}
+
+.griddata{
+  display: grid;
+  grid-template-columns: 80px auto;
+}
+
+.griddata > p{
+  padding: 0;
+  margin-bottom: 0;
+  margin-top: 6px;
+}
+
+.griddata > p:nth-child(1){
+  font-weight: bold;
+}
 
 
 /* WIDTH */
