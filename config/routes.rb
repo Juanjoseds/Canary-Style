@@ -25,7 +25,11 @@ Rails.application.routes.draw do
   get '/products/hombre', to: 'products#hombre', as: 'hombre'
   get '/products/mujer', to: 'products#mujer', as: 'mujer'
   post 'products/:id/talla', to: 'products#talla', as: 'savetalla'
+  get 'products/:id/talla/:talla', to: 'products#talla'
   get 'users/deletecarrito/:index', to: 'users#deletecarrito'
+  get '/user', to: 'users#show', as: 'userview'
+  get 'products/buy', to: 'products#buy'
+  post 'products/buy', to: 'products#buy'
 
 
   # resources :products

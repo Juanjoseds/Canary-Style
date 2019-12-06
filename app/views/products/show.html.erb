@@ -76,6 +76,7 @@
     <% end %>
     <p class="talla"><i class="fas fa-ruler"></i> Tallaje disponible</p>
 
+    <!-- BOTONES TALLA -->
     <div class="btn-group" role="group" aria-label="Basic example">
       <% @product.talla.each do |tallaje| %>
         <%= button_to tallaje, savetalla_path, method: :post, params: {talla: tallaje} %>
@@ -102,8 +103,13 @@
       <% end %>
 
     <!-- BOTON CARRITO -->
+    <% if session[:userid] != nil %>
     <%= button_to "Añadir al carrito", { action: "carritoadd", controller: "users" }, class: "btn btn-outline-success btncarrito show-toast" %>
-
+    <% else %>
+      <div class="alert alert-danger mt-2" role="alert">
+        <i class="fas fa-exclamation-triangle"></i> Solo puedes añadir artículos al carrito si tienes una cuenta en CanaryStyle
+      </div>
+    <% end %>
     <hr class="linea">
 
     <p class="talla"><i class="fa fa-book"></i> Descripción </p>

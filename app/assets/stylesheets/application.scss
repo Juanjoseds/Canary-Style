@@ -17,6 +17,12 @@ body{
   background: #fbfbfb;
 }
 
+footer{
+  -webkit-box-shadow: inset 10px 10px 14px 0px rgba(0,0,0,0.11);
+  -moz-box-shadow: inset 10px 10px 14px 0px rgba(0,0,0,0.11);
+  box-shadow: inset 10px 10px 14px 0px rgba(0,0,0,0.11);
+}
+
 .bg-light{
   background-color: white !important;
 }
@@ -532,14 +538,29 @@ body{
   left: 50%;
   margin-top: -50px;
   margin-left: -100px;
-  text-align: center;
+}
+
+.centerText{
+  position: fixed;
+  top: 52%;
+  left: 43%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
+.centerTextUser{
+  position: fixed;
+  top: 52%;
+  left: 45.5%;
+  margin-top: -50px;
+  margin-left: -100px;
 }
 
 .shopbag{
   color: gainsboro;
 }
 
-.centerCart > p {
+.centerCart > p{
   margin-top: 1em;
   color: Gray;
   font-size: 18px;
@@ -547,13 +568,15 @@ body{
 
 }
 
-// CESTA
-
 .titleCesta{
   color: Gray;
   font-size: 25px;
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
+}
+
+.titleCesta > p:nth-child(2){
+  text-align: center;
 }
 
 .cartImage{
@@ -581,9 +604,9 @@ body{
   margin-top: 3px !important;
 }
 
-.productCesta{
+.productCesta, .titleCesta{
   display: grid;
-  grid-template-columns: 40% 40%;
+  grid-template-columns: 40% 60%;
 }
 
 .contentcesta{
@@ -610,6 +633,70 @@ body{
   justify-content: center;
   align-items: center;
 }
+
+.mainCart{
+  margin-left: 70px;
+}
+
+.cart-text, .cart-text1{
+  text-align: center;
+  color: Gray;
+  font-size: 18px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.cart-text1{
+  font-family: 'Quicksand', sans-serif;
+  color: black;
+}
+
+.userdata{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.userdata > .card {
+  width: 25em!important;
+}
+
+.finalCart > p{
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 30px;
+}
+.pricefinal{
+  font-weight: bold;
+}
+.centerbutton{
+  text-align: center;
+}
+
+.btnbuy{
+  width: 25em;
+}
+
+// USER PROFILE
+.titleProfile{
+  font-family: 'Quicksand', sans-serif;
+  font-size: 30px;
+  margin-top: 30px;
+}
+
+.alluserinfo{
+  display: flex;
+  justify-content: center;
+}
+
+.gridUser{
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.section2{
+  margin-top: 20px;
+}
+
 
 
 /* WIDTH */

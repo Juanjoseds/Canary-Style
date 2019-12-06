@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_180740) do
+ActiveRecord::Schema.define(version: 2019_12_06_173641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(version: 2019_12_05_180740) do
     t.string "talla_camiseta"
     t.integer "talla_pantalon"
     t.string "talla_chandal"
+    t.string "direccion", default: "0", null: false
+    t.string "ciudad", default: "0", null: false
+    t.string "phone", default: "0", null: false
   end
 
 end

@@ -2,6 +2,7 @@
 <%
   @index = 0
   @cartItems = 0
+  @precioTotal = 0
   if session[:userid] != nil
   session[:cart].each do |carrito|
     @cartItems = @cartItems +1
@@ -11,15 +12,22 @@
   <% if @cartItems == 0%>
 
   <div class="centerCart">
-    <i class="fa fa-shopping-bag fa-5x shopbag" aria-hidden="true"></i>
-    <p>No tienes nada aún en la cesta</p>
+    <div><i class="fa fa-shopping-bag fa-5x shopbag" aria-hidden="true"></i></div>
+    <% if session[:userid] != nil %>
+      <p class="centerTextUser">No tienes nada aún en la cesta</p>
+    <% else %>
+      <p class="centerText">Debes estar registrado para usar la cesta</p>
+    <% end %>
   </div>
 
   <% else %>
-  <div class="titleCesta ml-4 mt-3"><p>Artículos en el carrito</p></div>
+  <div class="titleCesta ml-4 mt-3">
+    <p>Artículos en el carrito</p>
+    <p class="ml-5">Tramitar pedido</p>
+  </div>
   <div class="productCesta ml-4 mr-4" >
     <div>
-    <table class="table table-hover table-sm" >
+    <table class="table table-hover table-sm table-borderless" >
       <tbody>
       <% session[:cart].each do |id| %>
           <% @product = Product.where(id: id).take %>
@@ -48,9 +56,11 @@
           else
             @precio = @product.price.round(2)
           end
-        end %>
+        end
+        @precioTotal += @precio
+      %>
 
-        <tr style="height: 100px;">
+        <tr style="cursor: pointer; height: 100px;"onclick='window.location.href="/product/<%= @product.id %>"'>
           <td style="width: 5px!important;"><p class="indexCart"><%= @index+1 %></p></td>
           <td style="width: 100px!important;"><img class="cartImage" src="<%= @product.image %>" alt="Imagen del producto"></td>
           <td style="width: 200px">
@@ -74,9 +84,35 @@
       </tbody>
     </table>
     </div>
+    <div class="mainCart">
+      <p class="cart-text">Últimos pasos para completar tu pedido</p>
+      <p class="cart-text1">Comprueba que tus datos de envío son correctos</p>
 
-    <div>
-      <p>Tonta si lees esto jaja</p>
+      <div class="userdata">
+        <div class="card">
+          <div class="card-header">
+            <%= session['name'] %>
+          </div>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fas fa-home"></i> C/ <%= session[:direccion] %></li>
+            <li class="list-group-item"><i class="fas fa-globe-americas"></i> <%= session[:ciudad] %></li>
+            <li class="list-group-item"><i class="fas fa-phone"></i> <%= session[:phone] %></li>
+          </ul>
+
+          <div class="card-footer" style="text-align: center">
+            <small>¿Algún dato es erróneo? <%= link_to "Corrígelo", userview_path %></small>
+          </div>
+        </div>
+
+      </div>
+      <div class="finalCart mt-4">
+        <p>Total:&emsp; <label class="pricefinal"><%= @precioTotal %> €</label></p>
+        <div class="centerbutton">
+          <% session[:precioTotal] = @precioTotal %>
+          <%= button_to "Comprar", {action: "buy", controller: "products"}, {class: 'btn btn-dark btnbuy'} %>
+        </div>
+      </div>
     </div>
   </div>
 

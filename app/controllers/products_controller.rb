@@ -17,8 +17,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @users = User.all
-    @user = User.new
+    setUser
     @product = Product.find(params[:id])
     render :show
   end
@@ -43,27 +42,34 @@ class ProductsController < ApplicationController
   end
 
   def novedades
-    @users = User.all
-    @user = User.new
+    setUser
     @products = Product.all
   end
 
   def hombre
-    @users = User.all
-    @user = User.new
+    setUser
     @products = Product.all
   end
 
   def mujer
+    setUser
+    @products = Product.all
+  end
+
+  def setUser
     @users = User.all
     @user = User.new
-    @products = Product.all
   end
 
   def talla
     session[:talla] = params[:talla]
     puts '-------talla------'
     print session[:talla]
+    redirect_to request.referer.present? ? request.referer : default_path
+  end
+
+  def buy
+    redirect_to request.referer.present? ? request.referer : default_path
   end
   private
 

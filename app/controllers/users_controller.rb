@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    index
+
+  end
+
   def login
     @user = params[:user]['username']
     @password = params[:user]['password']
@@ -27,40 +32,37 @@ class UsersController < ApplicationController
       session[:talla_camiseta] = @db['talla_camiseta']
       session[:talla_pie] = @db['talla_pie']
       session[:talla_pantalon] = @db['talla_pantalon']
+      session[:ciudad] = @db['ciudad']
+      session[:direccion] = @db['direccion']
+      session[:phone] = @db['phone']
 
     end
-
-    puts '-----------SESSION-------------------'
-    puts session[:name]
-    puts '-------------------------------------'
-    puts @user + ' ' + @password
-    puts @db['username']
-    # puts user_params
-    puts '-------------------------------------'
-      redirect_to main_path
+    redirect_to request.referer.present? ? request.referer : default_path
   end
 
+  # LIMPIAMOS LAS VARIABLES DE SESIÓN UTILIZADAS
   def logout
     session[:username] = nil
     session[:userid] = nil
+    session[:name] = nil
     session[:cart] = nil
     session[:tallacesta] = nil
-    redirect_to main_path
+    session[:talla_camiseta] = nil
+    session[:talla_pie] = nil
+    session[:talla_pantalon] = nil
+    redirect_to request.referer.present? ? request.referer : default_path
   end
 
   # ALMACENAMOS EN SESSION LOS ELEMENTOS QUE HA AÑADIDO EL USUARIO
   def carritoadd
     session[:cart].push(params[:id])
     session[:tallacesta].push(session[:talla])
-    #DEBUG
-    puts '-------SE HA AÑADIDO AL CARRITO------------'
-    print session[:cart]
-    print session[:tallacesta]
   end
 
   def deletecarrito
     puts '------DELETE-----'
     session[:cart].delete_at(params[:index].to_i)
+    session[:tallacesta].delete_at(params[:index].to_i)
     redirect_to request.referer.present? ? request.referer : default_path
   end
 

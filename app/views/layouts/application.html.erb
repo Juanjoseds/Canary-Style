@@ -77,12 +77,12 @@
           <% if session[:userid] != nil  %>
             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><i class="fa fa-user-o avatar avatarnav" aria-hidden="true"></i> <%= session[:name] %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
+              <li><a href="/user" class="dropdown-item"><i class="fa fa-user-o"></i> Perfil</a></li>
               <li><a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></li>
               <li><a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></li>
               <li class="divider dropdown-divider"></li>
               <!-- logout -->
-              <li><a href="/users/logout" class="dropdown-item"><i class="fa fa-sign-out"></i> Logout</a></li>
+              <li><a href="/users/logout" class="dropdown-item"><i class="fa fa-sign-out"></i> Salir</a></li>
             </ul>
           <% else %>
             <a href="#myModal" data-toggle="modal" class="nav-link user-action"><i class="fa fa-user-o avatar avatarnav" aria-hidden="true"></i> Entrar <b class="caret"></b></a>
@@ -107,7 +107,6 @@
 
         <div class="modal-body">
           <%= form_for @user do |f| %>
-            <form action="/examples/actions/confirmation.php" method="post">
               <div class="form-group">
                 <%= f.text_field :username, class: 'form-control', placeholder: "Usuario" %>
                 <!-- <input type="text" class="form-control" name="username" placeholder="Username" required="required"> -->
@@ -121,7 +120,6 @@
                 <%= f.submit "Log In", class: 'btn btn-primary btn-lg btn-block login-btn' %>
                 <!-- <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button> -->
               </div>
-            </form>
           <% end %>
         </div>
         <div class="modal-footer">
