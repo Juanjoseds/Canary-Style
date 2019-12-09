@@ -90,7 +90,7 @@
           <% elsif session[:option] == 2 %>
           <div class="card">
             <div class="card-header">
-              <i class="fas fa-address-card"></i> Modifica tus datos
+              <i class="fas fa-edit"></i> Modifica tus datos
             </div>
             <div class="card-body">
               <h5 class="card-title">Modificación</h5>
@@ -99,21 +99,46 @@
               </p>
               <hr>
               <%= form_for @userdata, :url => update_path do |f| %>
-                <div class="form-group">
-                  <%= f.label "Nombre: "%>
-                  <%= f.text_field :name, class: 'form-control', placeholder: session[:name] %>
+                <div class="form-group formUser">
+                  <p><strong>Nombre:</strong></p>
+                  <%= f.text_field :name, class: 'form-control', value: session[:name] %>
                 </div>
-                <div class="form-group">
-                  <%= f.text_field :direccion, class: 'form-control', placeholder: session[:direccion] %>
+                <div class="form-group formUser">
+                  <p><strong>Dirección:</strong></p>
+                  <%= f.text_field :direccion, class: 'form-control', value: session[:direccion] %>
                 </div>
-                <div class="form-group">
-                  <%= f.text_field :ciudad, class: 'form-control', placeholder: session[:ciudad] %>
+                <div class="form-group formUser">
+                  <p><strong>Ciudad:</strong></p>
+                  <%= f.text_field :ciudad, class: 'form-control', value: session[:ciudad]%>
                 </div>
-                <div class="form-group">
-                  <%= f.text_field :pais, class: 'form-control', placeholder: session[:pais] %>
+                <div class="form-group formUser">
+                  <p><strong>País:</strong></p>
+                  <%= f.text_field :pais, class: 'form-control', value: session[:pais] %>
                 </div>
-                <div class="form-group">
-                  <%= f.text_field :phone, class: 'form-control', placeholder: session[:phone] %>
+                <div class="form-group formUser">
+                  <p><strong>Teléfono:</strong></p>
+                  <%= f.text_field :phone, class: 'form-control', value: session[:phone] %>
+                </div>
+                <hr>
+                <div class="alert alert-info" role="alert">
+                  <i class="fas fa-info-circle"></i> Estos datos son importantes para mejorar
+                  tu experiencia al elegir productos en nuestra tienda según la disponibilidad.
+                </div>
+                <div class="form-group formUser">
+                  <p><strong>Talla de camiseta:</strong></p>
+                  <%= f.select :talla_camiseta, options_for_select([[session[:talla_camiseta]], "XS", "S", "M", "L", "XL", "XXL"]) %>
+                </div>
+                <div class="form-group formUser">
+                  <p><strong>Talla de zapato:</strong></p>
+                  <%= f.text_field :talla_pie, class: 'form-control', value: session[:talla_pie] %>
+                </div>
+                <div class="form-group formUser">
+                  <p><strong>Talla de joggins:</strong></p>
+                  <%= f.select :talla_chandal, options_for_select([[session[:talla_chandal]], "XS", "S", "M", "L", "XL", "XXL"]) %>
+                </div>
+                <div class="form-group formUser">
+                  <p><strong>Talla de pantalón:</strong></p>
+                  <%= f.text_field :talla_pantalon, class: 'form-control', value: session[:talla_pantalon] %>
                 </div>
                 <%= f.submit "Actualizar" %>
               <% end %>

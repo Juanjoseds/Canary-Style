@@ -13,22 +13,35 @@ class UsersController < ApplicationController
     index
   end
 
+  # ACTUALIZA LOS DATOS DEL USUARIO EN EL SERVIDOR
   def update
-
-    puts '-------LLEGUE!--------'
     print params[:id]
     print params[:user]['username']
 
     @userdata = User.where(id: params[:id]).take
     if @userdata.update(user_params)
-      puts '---------UPDATE OK-----------'
+      #Actualizamos las variables necesarias
+      refresh
       redirect_to request.referer.present? ? request.referer : default_path
     else
       redirect_to request.referer.present? ? request.referer : default_path
     end
-    puts '-------!--------'
   end
 
+  def refresh
+    session[:name] = @userdata['name']
+    session[:direccion] = @userdata['direccion']
+    session[:ciudad] = @userdata['ciudad']
+    session[:pais] = @userdata['pais']
+    session[:phone] = @userdata['phone']
+    session[:talla_camiseta] = @userdata['talla_camiseta']
+    session[:talla_pie] = @userdata['talla_pie']
+    session[:talla_chandal] = @userdata['talla_chandal']
+    session[:talla_pantalon] = @userdata['talla_pantalon']
+    puts '----------REFRESH-------'
+    print @userdata['talla_camiseta']
+  end
+  # Comprueba los datos que ha introducido el usuario con los del servidor
   def login
     @user = params[:user]['username']
     @password = params[:user]['password']
@@ -48,17 +61,17 @@ class UsersController < ApplicationController
       session[:talla_camiseta] = @db['talla_camiseta']
       session[:talla_pie] = @db['talla_pie']
       session[:talla_pantalon] = @db['talla_pantalon']
+      session[:talla_chandal] = @db['talla_chandal']
       session[:ciudad] = @db['ciudad']
       session[:direccion] = @db['direccion']
       session[:phone] = @db['phone']
       session[:pais] = @db['pais']
       session[:option] = 1
-
     end
     redirect_to request.referer.present? ? request.referer : default_path
   end
 
-  # LIMPIAMOS LAS VARIABLES DE SESIÓN UTILIZADAS
+  # Limpiamos las variables de sesión utilizadas
   def logout
     session[:username] = nil
     session[:userid] = nil
@@ -71,12 +84,13 @@ class UsersController < ApplicationController
     redirect_to request.referer.present? ? request.referer : default_path
   end
 
-  # ALMACENAMOS EN SESSION LOS ELEMENTOS QUE HA AÑADIDO EL USUARIO
+  # Almacenamos en variable de sesión los elementos que ha añadido el usuario al carrito
   def carritoadd
     session[:cart].push(params[:id])
     session[:tallacesta].push(session[:talla])
   end
 
+  # Borramos el elemento que el usuario ha elegido
   def deletecarrito
     puts '------DELETE-----'
     session[:cart].delete_at(params[:index].to_i)
@@ -112,7 +126,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :admin,
                                   :username, :password, :talla_pie,
                                   :talla_camiseta, :talla_pantalon,
-                                  :ciudad, :phone, :pais, :direccion)
+                                  :talla_chandal, :ciudad, :phone, :pais, :direccion)
   end
-
 end
