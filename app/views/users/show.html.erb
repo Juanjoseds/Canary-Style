@@ -39,7 +39,7 @@
         </div>
 
       </div>
-      <div class="section2 ml-3"> <!-- SECTION 2 -->
+      <div class="section2 ml-3 mb-3"> <!-- SECTION 2 -->
         <% if session[:option] == 1 %>
         <div class="card">
           <div class="card-header">
@@ -88,7 +88,37 @@
           </div>
         </div>
           <% elsif session[:option] == 2 %>
-          pussy
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-address-card"></i> Modifica tus datos
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Modificación</h5>
+              <p class="card-text cardtextuser">
+                Corrige los datos erroneos para ofercerte un mejor servicio.
+              </p>
+              <hr>
+              <%= form_for @userdata, :url => update_path do |f| %>
+                <div class="form-group">
+                  <%= f.label "Nombre: "%>
+                  <%= f.text_field :name, class: 'form-control', placeholder: session[:name] %>
+                </div>
+                <div class="form-group">
+                  <%= f.text_field :direccion, class: 'form-control', placeholder: session[:direccion] %>
+                </div>
+                <div class="form-group">
+                  <%= f.text_field :ciudad, class: 'form-control', placeholder: session[:ciudad] %>
+                </div>
+                <div class="form-group">
+                  <%= f.text_field :pais, class: 'form-control', placeholder: session[:pais] %>
+                </div>
+                <div class="form-group">
+                  <%= f.text_field :phone, class: 'form-control', placeholder: session[:phone] %>
+                </div>
+                <%= f.submit "Actualizar" %>
+              <% end %>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>

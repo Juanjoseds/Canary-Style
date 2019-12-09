@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @user = User.new
+    @userdata = User.new
   end
 
   def new
@@ -10,7 +11,22 @@ class UsersController < ApplicationController
 
   def show
     index
-    session[:uservista] = 0
+  end
+
+  def update
+
+    puts '-------LLEGUE!--------'
+    print params[:id]
+    print params[:user]['username']
+
+    @userdata = User.where(id: params[:id]).take
+    if @userdata.update(user_params)
+      puts '---------UPDATE OK-----------'
+      redirect_to request.referer.present? ? request.referer : default_path
+    else
+      redirect_to request.referer.present? ? request.referer : default_path
+    end
+    puts '-------!--------'
   end
 
   def login
@@ -35,6 +51,8 @@ class UsersController < ApplicationController
       session[:ciudad] = @db['ciudad']
       session[:direccion] = @db['direccion']
       session[:phone] = @db['phone']
+      session[:pais] = @db['pais']
+      session[:option] = 1
 
     end
     redirect_to request.referer.present? ? request.referer : default_path
@@ -77,12 +95,24 @@ class UsersController < ApplicationController
 
   def option2
     session[:option] = 2
+    @userdata = User.find(session[:userid])
+    print @userdata['name']
+
     redirect_to request.referer.present? ? request.referer : default_path
   end
 
   def option3
     session[:option] = 3
     redirect_to request.referer.present? ? request.referer : default_path
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :admin,
+                                  :username, :password, :talla_pie,
+                                  :talla_camiseta, :talla_pantalon,
+                                  :ciudad, :phone, :pais, :direccion)
   end
 
 end

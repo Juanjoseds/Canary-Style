@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   get '/users/option2', to: 'users#option2'
   get '/users/option3', to: 'users#option3'
 
+  get '/user/:id', to: 'users#show'
+  post '/user/:id', to: 'users#update', as: 'update'
+
 
   # resources :products
   # resources :users
