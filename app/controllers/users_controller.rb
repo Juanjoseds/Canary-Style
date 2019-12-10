@@ -54,6 +54,7 @@ class UsersController < ApplicationController
 
     if @user == @db_user && @password == @db_password
       session[:username] = @db_user
+      session[:admin] = @db['admin']
       session[:userid] = @db_id
       session[:name] = @db_name
       session[:cart] ||= []
@@ -74,6 +75,7 @@ class UsersController < ApplicationController
   # Limpiamos las variables de sesión utilizadas
   def logout
     session[:username] = nil
+    session[:admin] = nil
     session[:userid] = nil
     session[:name] = nil
     session[:cart] = nil

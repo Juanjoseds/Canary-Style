@@ -57,7 +57,7 @@
   <header>
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><i class="fa fa-gg"></i>Canary<b>Style</b></a>
+    <a class="navbar-brand" href="<%= main_path %>"><i class="fa fa-gg"></i>Canary<b>Style</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -67,6 +67,9 @@
         <%= link_to "Novedades", novedades_path , :class => "nav-item nav-link" + @novedades %>
         <%= link_to "Hombre", hombre_path , :class => "nav-item nav-link" + @hombre %>
         <%= link_to "Mujer", mujer_path , :class => "nav-item nav-link" + @mujer %>
+        <%= form_tag search_path, :method => 'get', class: "search" do %>
+        <%= text_field_tag :search, params[:search] %>
+          <% end %>
       </div>
       <ul class="nav navbar-nav navbar-right ml-auto">
         <li class="nav-item"><a href="#" class="nav-link notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
@@ -78,8 +81,10 @@
             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><i class="fa fa-user-o avatar avatarnav" aria-hidden="true"></i> <%= session[:name] %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="/user/<%= session[:userid] %>" class="dropdown-item"><i class="fa fa-user-o"></i> Perfil</a></li>
-              <li><a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></li>
-              <li><a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></li>
+              <% if session[:admin] == 1 %>
+                <li><a href="/products/admin" class="dropdown-item"><i class="fas fa-tools"></i> Administrar</a></li>
+              <% end %>
+
               <li class="divider dropdown-divider"></li>
               <!-- logout -->
               <li><a href="/users/logout" class="dropdown-item"><i class="fa fa-sign-out"></i> Salir</a></li>

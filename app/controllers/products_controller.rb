@@ -1,9 +1,11 @@
 class ProductsController < ApplicationController
   def index
+    setUser
     @products = Product.all
   end
 
   def new
+    setUser
     @product = Product.new
   end
 
@@ -38,7 +40,14 @@ class ProductsController < ApplicationController
   def delete
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to products_path
+    redirect_to mainadmin_path
+  end
+
+  def search
+    setUser
+    @products = Product.where(["name ILIKE ?","%#{params[:search]}%"])
+
+    render 'products/search'
   end
 
   def novedades
@@ -49,6 +58,7 @@ class ProductsController < ApplicationController
   def hombre
     setUser
     @products = Product.all
+
   end
 
   def mujer

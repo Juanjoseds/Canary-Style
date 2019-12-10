@@ -3,7 +3,6 @@
     <div id="productos">
 
       <% @products.each do |product| %>
-        <% if product.genero == 1 %>
           <a href="/product/<%= product.id %>" class="enlace">
             <div class="card productcard" style="width: 18rem;">
               <img class="card-img-top" src="<%= product.image %>" alt="Card image cap">
@@ -34,7 +33,6 @@
                 <% end %>
               <% end %>
             </div>
-        <% end %>
       <% end %>
       </a>
     </div>

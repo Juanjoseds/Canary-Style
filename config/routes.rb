@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get '/products/:id/edit', to: 'products#edit', as: 'edit_product'
   patch '/product/:id', to: 'products#update'
   put '/product/:id', to: 'products#update'
-  delete '/product/:id', to: 'products#delete'
+  delete '/products/:id/delete', to: 'products#delete', as: 'deleteproduct'
+  get 'products/:id/delete', to: 'products#delete'
 
   get '/users', to: 'users#index' # users_path
   get '/users/new', to: 'users#new' # users_new_path
@@ -19,7 +20,6 @@ Rails.application.routes.draw do
   get '/users/logout', to: 'users#logout', as: 'logout'
   get '/user/cesta', to: 'users#cesta', as: 'cesta'
   post '/users/:id/carritoadd', to: 'users#carritoadd'
-
 
   get '/products/novedades', to: 'products#novedades', as: 'novedades'
   get '/products/hombre', to: 'products#hombre', as: 'hombre'
@@ -36,6 +36,9 @@ Rails.application.routes.draw do
 
   get '/user/:id', to: 'users#show'
   post '/user/:id', to: 'users#update', as: 'update'
+
+  get '/products/search', to: 'products#search', as: 'search'
+  get '/products/admin', to: 'products#index', as: 'mainadmin'
 
 
   # resources :products

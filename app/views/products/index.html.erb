@@ -1,25 +1,42 @@
-<h1>Listado de productos</h1>
-<table>
-  <tr>
-    <thead>
-      <th>Nombre</th>
-      <th>Descripción</th>
-      <th>Color</th>
-      <th>Precio</th>
+<div class="mainadmin">
+  <p class="titleCesta">Listado de productos</p>
+
+  <table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Color</th>
+      <th scope="col">Rgb</th>
+      <th scope="col">Tallas</th>
+      <th scope="col">Género</th>
+      <th scope="col">Oferta</th>
+      <th scope="col">Precio</th>
+      <th scope="col"></th>
+    </tr>
     </thead>
-  </tr>
+    <tbody>
     <% @products.each do |product| %>
-  <tr>
-    <td><%= product.name %></td>
-    <td><%= product.description %></td>
-    <td><%= product.color %></td>
-    <td><%= product.price %></td>
-    <td>
-      <%= link_to "Mostrar" %>
-      <%= link_to "Editar", edit_product_path(product) %>
-      <%= link_to "Eliminar", product, method: :delete, data: { confirm: "¿Deseas eliminar " + product.name + "?" } %>
-    </td>
-  </tr>
+    <tr>
+      <th scope="row"><%= product.id %></th>
+      <td><%= product.name %></td>
+      <td><%= product.description %></td>
+      <td><%= product.color %></td>
+      <td><%= product.rgb %></td>
+      <td><%= product.talla %></td>
+      <td><%= product.genero %></td>
+      <td><%= product.offer %></td>
+      <td><%= product.price %></td>
+      <td>
+        <%= link_to "Mostrar" %>
+        <%= link_to "Editar", edit_product_path(product) %>
+        <section class="borrarCart"><%= link_to "Eliminar", product, method: :delete, data: {confirm: "¿Deseas eliminar " + product.name + "?" }, class: "btn btn-danger" %></section>
+      </td>
+    </tr>
     <% end %>
-</table>
+    </tbody>
+  </table>
+</div>
+
 <%= link_to "Crear articulo", products_new_path %>
