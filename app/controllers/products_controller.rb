@@ -25,6 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    setUser
     @product = Product.find(params[:id])
   end
 
@@ -50,15 +51,22 @@ class ProductsController < ApplicationController
     render 'products/search'
   end
 
+  def searchadmin
+    setUser
+    @products = Product.where(["name ILIKE ?","%#{params[:search]}%"])
+    puts '------------SEARCH ADMIN----------------'
+    render 'products/index'
+  end
+
   def novedades
     setUser
     @products = Product.all
+    @products = Product.order('created_at DESC')
   end
 
   def hombre
     setUser
     @products = Product.all
-
   end
 
   def mujer

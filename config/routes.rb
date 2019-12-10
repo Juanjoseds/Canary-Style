@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   post '/user/:id', to: 'users#update', as: 'update'
 
   get '/products/search', to: 'products#search', as: 'search'
+  get '/products/admin/search', to: 'products#searchadmin', as: 'searchadmin'
   get '/products/admin', to: 'products#index', as: 'mainadmin'
 
 
