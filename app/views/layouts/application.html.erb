@@ -70,7 +70,7 @@
         <%= link_to "Hombre", hombre_path , :class => "nav-item nav-link" + @hombre %>
         <%= link_to "Mujer", mujer_path , :class => "nav-item nav-link" + @mujer %>
         <%= form_tag search_path, :method => 'get', class: "search" do %>
-        <%= text_field_tag :search, params[:search] %>
+        <%= text_field_tag :search, params[:search], placeholder: raw("&#xf002; Buscar..."), style: "font-family: 'FontAwesome';", class: "searchbar" %>
           <% end %>
       </div>
       <ul class="nav navbar-nav navbar-right ml-auto">

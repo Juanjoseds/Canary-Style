@@ -1,22 +1,55 @@
-<%= form_for @product do |f| %>
+<div>
+  <div class="new mt-3">
+    <div class="card">
+      <h5 class="card-header">Crea un nuevo producto</h5>
+      <div class="card-body">
+        <h5 class="card-title">Nuevo producto</h5>
+        <p class="card-text">Al añadir un producto, se añadirá directamente a la web, pudiendo ser comprado por los clientes en cualquier momento. Por favor, asegurate que el artículo esta disponible para envío a la hora de añadirlo.</p>
+        <hr>
 
-  <div>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+        <%= form_for @product do |f| %>
+        <div class="form-group formNew">
+          <p><strong>Nombre:</strong></p>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-group formNew">
+          <p><strong>Descripción:</strong></p>
+          <%= f.text_field :description, class: 'form-control' %>
+        </div>
+          <div class="form-group formNew">
+            <p><strong>Precio:</strong></p>
+            <%= f.text_field :price, class: 'form-control' %>
+          </div>
+        <div class="form-group formNew">
+          <p><strong>Género:</strong></p>
+          <%= f.text_field :genero, class: 'form-control'%>
+        </div>
+        <div class="form-group formNew">
+          <p><strong>Color:</strong></p>
+          <%= f.text_field :color, class: 'form-control'%>
+        </div>
+        <div class="form-group formNew">
+          <p><strong>Rgb:</strong></p>
+          <%= f.text_field :rgb, class: 'form-control'%>
+        </div>
+        <div class="form-group formNew">
+          <p><strong>Descuento:</strong></p>
+          <%= f.text_field :offer, class: 'form-control'%>
+        </div>
+        <div class="form-group formNew">
+          <p><strong>Imágen:</strong></p>
+          <%= f.file_field :image, class: 'form-control'%>
+        </div>
+          <%= f.submit %>
+        <% end %>
+        <hr>
+        Ayuda?
+        <input type="color">
+
+      </div>
+    </div>
   </div>
-  <div>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-  <div>
-    <%= f.label :color %>
-    <%= f.text_field :color %>
-  </div>
-  <div>
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+
+
+

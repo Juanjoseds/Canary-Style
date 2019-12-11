@@ -6,7 +6,7 @@
         <% if product.genero == 0 %>
           <a href="/product/<%= product.id %>" class="enlace">
           <div class="card productcard" style="width: 18rem;">
-            <img class="card-img-top" src="<%= product.image %>" alt="Card image cap">
+            <img class="card-img-top" src="<%= url_for(product.image) %>" alt="Card image cap">
             <div class="card-body cardpadding">
               <h5 class="card-title"><%= product.name %></h5>
               <div class="color">

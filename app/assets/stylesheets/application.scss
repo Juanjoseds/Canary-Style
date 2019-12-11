@@ -676,6 +676,11 @@ footer{
   width: 25em;
 }
 
+.searchbar{
+  margin-left: 1em;
+}
+
+
 // USER PROFILE
 .mainUser{
   width: 50%;         //IMPORTANTE MEDIAQUERY
@@ -731,7 +736,7 @@ footer{
   grid-template-columns: 90px auto;
 }
 
-.formUser> p{
+.formUser> p , .formNew > p{
   padding: 0;
   margin: 0;
 }
@@ -770,6 +775,28 @@ option:nth-child(1){
   position: absolute;
 }
 
+.buscadorgrid{
+  display: grid;
+  grid-template-columns: 340px auto;
+}
+
+.close{
+  float: left;
+  margin-top: 4px;
+  font-size: 30px;
+}
+
+//NEW PRODUCT
+.new{
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formNew{
+  display: grid;
+  grid-template-columns: 100px auto;
+}
 
 /* WIDTH */
 @media only screen and (min-width: 300px){
