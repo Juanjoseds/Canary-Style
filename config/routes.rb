@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get '/products/search', to: 'products#search', as: 'search'
   get '/products/admin/search', to: 'products#searchadmin', as: 'searchadmin'
   get '/products/admin', to: 'products#index', as: 'mainadmin'
+  get '/products/:id/edit/upload', to: 'products#upload', as: 'upload'
 
 
   # resources :products

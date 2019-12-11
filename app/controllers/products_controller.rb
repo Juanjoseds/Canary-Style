@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
     setUser
+    session[:upload] = false
     @products = Product.all
   end
 
@@ -30,8 +31,13 @@ class ProductsController < ApplicationController
   end
 
   def update
+
     @product = Product.find(params[:id])
-    @product.image.attach(params[:image])
+    
+    unless params[:image].blank?
+      @product.image.attach(params[:image])
+    end
+
     if @product.update(product_params)
       redirect_to products_path
     else

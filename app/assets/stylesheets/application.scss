@@ -798,6 +798,10 @@ option:nth-child(1){
   grid-template-columns: 100px auto;
 }
 
+.formNew > p{
+  margin-top: 6px;
+}
+
 /* WIDTH */
 @media only screen and (min-width: 300px){
   .mainproductos{margin-left: 1em;}
