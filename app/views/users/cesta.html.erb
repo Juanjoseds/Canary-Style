@@ -62,7 +62,7 @@
 
         <tr style="cursor: pointer; height: 100px;"onclick='window.location.href="/product/<%= @product.id %>"'>
           <td style="width: 5px!important;"><p class="indexCart"><%= @index+1 %></p></td>
-          <td style="width: 100px!important;"><img class="cartImage" src="<%= @product.image %>" alt="Imagen del producto"></td>
+          <td style="width: 100px!important;"><img class="cartImage" src="<%= url_for(@product.image) %>" alt="Imagen del producto"></td>
           <td style="width: 200px">
             <div class="contentcesta">
               <section><%= @product.name %></section>

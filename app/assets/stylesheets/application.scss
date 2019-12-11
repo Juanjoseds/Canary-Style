@@ -786,6 +786,15 @@ option:nth-child(1){
   font-size: 30px;
 }
 
+.editcard{
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.cardedit{
+  float: left;
+}
+
 //NEW PRODUCT
 .new{
   width: 60%;
@@ -801,6 +810,17 @@ option:nth-child(1){
 .formNew > p{
   margin-top: 6px;
 }
+
+.checkbuttons{
+  display: grid;
+  grid-template-columns: 40px 20px;
+}
+
+.checkbuttons > p{
+  padding: 0;
+  margin: 0;
+}
+
 
 /* WIDTH */
 @media only screen and (min-width: 300px){

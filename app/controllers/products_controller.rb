@@ -8,6 +8,9 @@ class ProductsController < ApplicationController
   def new
     setUser
     @product = Product.new
+    @talla_xs = nil
+    @talla_s = nil
+    @talla_m = nil
   end
 
   def create
@@ -100,6 +103,6 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :description, :color, :price, :rgb,
-                                    :genero, :talla, :offer, :image)
+                                    :genero, :offer, :image, talla:[])
   end
 end

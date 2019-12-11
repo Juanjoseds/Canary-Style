@@ -37,6 +37,23 @@
           <%= f.text_field :offer, class: 'form-control'%>
         </div>
         <div class="form-group formNew">
+          <p><strong>Tallas:</strong></p>
+          <div class="checkbuttons">
+            <p>XS</p>
+            <%= f.check_box :talla, {multiple: true}, "XS", nil %>
+            <p>S</p>
+            <%= f.check_box :talla, {multiple: true}, "S", nil %>
+            <p>M</p>
+            <%= f.check_box :talla, {multiple: true}, "M", nil %>
+            <p>L</p>
+            <%= f.check_box :talla, {multiple: true}, "L", nil %>
+            <p>XL</p>
+            <%= f.check_box :talla, {multiple: true}, "XL", nil %>
+            <p>XXL</p>
+            <%= f.check_box :talla, {multiple: true}, "XXL", nil %>
+          </div>
+        </div>
+        <div class="form-group formNew">
           <p><strong>Imágen:</strong></p>
           <%= f.file_field :image, class: 'form-control'%>
         </div>
