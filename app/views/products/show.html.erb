@@ -39,7 +39,7 @@
 </div>
 
 <div class="container-fluid mt-4 mb-4 gridproduct">
-  <div class="imgProduct"><img src="<%= @product.image %>" alt="Imagen de producto" class="imgProduct"></div>
+  <div class="imgProduct"><img src="<%= url_for(@product.image) %>" alt="Imagen de producto" class="imgProduct"></div>
   <div class="mainInfo">
     <div class="title"><p><%= @product.name %></div>
 

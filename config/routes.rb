@@ -27,14 +27,14 @@ Rails.application.routes.draw do
   post 'products/:id/talla', to: 'products#talla', as: 'savetalla'
   get 'products/:id/talla/:talla', to: 'products#talla'
   get 'users/deletecarrito/:index', to: 'users#deletecarrito'
-  get '/user', to: 'users#show', as: 'userview'
+  get '/user', to: 'users#show'
   get 'products/buy', to: 'products#buy'
   post 'products/buy', to: 'products#buy'
   get '/users/option1', to: 'users#option1'
   get '/users/option2', to: 'users#option2'
   get '/users/option3', to: 'users#option3'
 
-  get '/user/:id', to: 'users#show'
+  get '/user/:id', to: 'users#show', as: 'userview'
   post '/user/:id', to: 'users#update', as: 'update'
 
   get '/products/search', to: 'products#search', as: 'search'

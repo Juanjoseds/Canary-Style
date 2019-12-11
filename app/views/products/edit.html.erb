@@ -1,24 +1,117 @@
 <div class="mt-4 ml-4">
-  <%= form_for @product do |f| %>
+  <p class="titleCesta">Modificar producto</p>
+  <div class="gridedit">
+    <div>
+      <table class="table table-hover table-bordered tableedit">
+        <tr>
+          <td class="tdedit">Imágen</td>
+          <% if @product.image.attached? %>
+          <td><img src=<%= url_for(@product.image) %> alt="" style="width: 100px"></td>
+            <% end %>
+        </tr>
+        <tr>
+          <td class="tdedit">ID</td>
+          <td><%= @product.id %></td>
+        </tr>
+        <tr>
+          <td class="tdedit">Nombre</td>
+          <td><%= @product.name %></td>
+        </tr>
+        <tr>
+          <td class="tdedit">Descripción</td>
+          <td><%= @product.description %></td>
+        </tr>
+        <tr>
+          <td class="tdedit">Género</td>
+          <td>
+            <% if @product.genero == 0 %>
+            Hombre
+            <% else %>
+            Mujer
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="tdedit">Tallas</td>
+          <td><%= @product.talla %></td>
+        </tr>
+        <tr>
+          <td class="tdedit">Color</td>
+          <td><%= @product.color %></td>
+        </tr>
+        <tr>
+          <td class="tdedit">Rgb</td>
+          <td><%= @product.rgb %></td>
+        </tr>
+        <tr>
+          <td class="tdedit">Precio</td>
+          <td><%= @product.price %> €</td>
+        </tr>
+        <% if @product.offer != 0 %>
+        <tr>
+          <td class="tdedit">Descuento</td>
+          <td><%= @product.offer %></td>
+        </tr>
+        <tr>
+          <td class="tdedit">Descuento aplicado</td>
+          <%
+            @decimales = false
+            @discount = @product.price - (@product.price * (@product.offer/100.00))
+            @aux = @discount.to_i.to_s + ".0"
 
-    <div>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+            if @aux == @discount.to_s
+              @precio = @discount.to_i
+              @decimales = false
+            else
+              @precio = @discount.round(2)
+              @decimales = true
+            end
+          %>
+          <td><%= @precio %> €</td>
+        </tr>
+        <% end %>
+      </table>
     </div>
     <div>
-      <%= f.label :description %>
-      <%= f.text_field :description %>
+      <%= form_for @product do |f| %>
+
+        <div>
+          <%= f.label "Nombre" %>
+          <%= f.text_field :name %>
+        </div>
+        <div>
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+        </div>
+        <div>
+          <%= f.label "Género" %>
+          <%= f.number_field :genero%>
+        </div>
+        <div>
+          <%= f.label :color %>
+          <%= f.text_field :color %>
+        </div>
+        <div>
+          <%= f.label "Rgb" %>
+          <%= f.text_field :rgb %>
+        </div>
+        <div>
+          <%= f.label "Precio" %>
+          <%= f.number_field :price, step: :any %>
+        </div>
+        <div>
+          <%= f.label "Descuento" %>
+          <%= f.number_field :offer%>
+        </div>
+        <div>
+          <%= f.label "Imagen" %>
+          <%= f.file_field :image%>
+        </div>
+        <div>
+          <%= f.submit %>
+        </div>
+      <% end %>
     </div>
-    <div>
-      <%= f.label :color %>
-      <%= f.text_field :color %>
-    </div>
-    <div>
-      <%= f.label :price %>
-      <%= f.number_field :price, step: :any %>
-    </div>
-    <div>
-      <%= f.submit %>
-    </div>
-  <% end %>
+  </div>
+
 </div>
