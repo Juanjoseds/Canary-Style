@@ -5,7 +5,7 @@
   end
 %>
 <div class="mainadmin">
-  <p class="titleCesta">Listado de productos</p>
+  <p class="titlegeneral">Listado de productos</p>
   <div class="buscadorgrid">
     <div>
       <%= form_tag searchadmin_path, :method => 'get', class: "search mb-3" do %>
@@ -31,12 +31,12 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Descripción</th>
-      <th scope="col">Color</th>
-      <th scope="col">Rgb</th>
-      <th scope="col">Tallas</th>
-      <th scope="col">Género</th>
-      <th scope="col">Oferta</th>
+      <th scope="col" class="hiddenquery">Descripción</th>
+      <th scope="col" class="hiddenquery">Color</th>
+      <th scope="col" class="hiddenquery">Rgb</th>
+      <th scope="col" class="hiddenquery">Tallas</th>
+      <th scope="col" class="hiddenquery">Género</th>
+      <th scope="col" class="hiddenquery">Oferta</th>
       <th scope="col">Precio</th>
       <th scope="col"></th>
     </tr>
@@ -46,15 +46,15 @@
     <tr style="cursor: pointer; height: 100px;"onclick='window.location.href="/product/<%= product.id %>"'>
       <th scope="row"><%= product.id %></th>
       <td><%= product.name %></td>
-      <td><%= product.description %></td>
-      <td><%= product.color %></td>
-      <td><%= product.rgb %></td>
-      <td><%= product.talla %></td>
-      <td><%= product.genero %></td>
-      <td><%= product.offer %></td>
-      <td><%= product.price %></td>
+      <td class="hiddenquery"><%= product.description %></td>
+      <td class="hiddenquery"><%= product.color %></td>
+      <td class="hiddenquery"><%= product.rgb %></td>
+      <td class="hiddenquery"><%= product.talla %></td>
+      <td class="hiddenquery"><%= product.genero %></td>
+      <td class="hiddenquery"><%= product.offer %></td>
+      <td><%= product.price %>€</td>
       <td>
-        <section class="borrarCart"><%= link_to "Editar", edit_product_path(product), class: "btn btn-warning btnadmin mb-1" %></section>
+        <section class="borrarCart"><%= link_to "Editar", edit_product_path(product), class: "btn btn-info btnadmin mb-1" %></section>
         <section class="borrarCart"><%= link_to "Eliminar", deleteproduct_path(product), method: :delete, data: {confirm: "¿Deseas eliminar " + product.name + "?" }, class: "btn btn-danger btnadmin" %></section>
       </td>
     </tr>

@@ -575,6 +575,13 @@ footer{
   font-weight: bold;
 }
 
+.titlegeneral{
+  color: Gray;
+  font-size: 25px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+}
+
 .titleCesta > p:nth-child(2){
   text-align: center;
 }
@@ -827,6 +834,36 @@ option:nth-child(1){
   .mainproductos{margin-left: 1em;}
   #productos{grid-template-columns: 100%;}
   .productcard{width: 16em;}
+
+  //Product view
+  .gridproduct{grid-template-columns: 100%}
+
+  //User profile
+  .mainUser{width: 95%;}
+  .gridUser{grid-template-columns: 100%;}
+  .section2{
+    width: auto;
+    margin-left: 0!important;
+  }
+
+  //Admin (Index product) view
+  .hiddenquery{
+    display: none;
+  }
+
+  //Edit Product
+  .gridedit{grid-template-columns: 100%}
+  .tableedit{
+    width: auto!important;
+    margin-right: 5px;
+  }
+  .editmargin{margin-left: 5px!important;}
+  .editcard{width: 100%; margin-left: 0;}
+  .cardedit{margin-right: 4px;}
+
+  //Shop Cart
+  .productCesta{grid-template-columns: 100%}
+  .mainCart{margin-left: 0;}
 }
 
 @media only screen and (min-width: 350px){
@@ -841,33 +878,90 @@ option:nth-child(1){
 
 @media only screen and (min-width: 600px){
   #productos{grid-template-columns: 100%;}
+  .gridproduct{grid-template-columns: 50% 50%;}
+
 }
 
 @media only screen and (max-width: 600px){
   .img-hombre-mujer{grid-template-columns: 100%;}
   .imghombre{margin-bottom: 1em;}
+
+
 }
 
 @media only screen and (min-width: 700px){
   #productos{grid-template-columns: 50% 50%;}
-}
+  //User profile
+  .mainUser{width: 99%;}
+  .gridUser{grid-template-columns: 30% 70%;}
+  .section2{
+    width: auto;
+    margin-left: 10px!important;
+    margin-right: 10px;
+  }
 
+  //Edit Product
+  .gridedit{grid-template-columns: auto auto}
+
+
+}
 
 @media only screen and (min-width: 930px){
   #productos{grid-template-columns: 33.33% 33.33% 33.33%;}
+
+  //Admin (Index product) view
+  .hiddenquery{
+    display: table-cell;
+  }
+
+  //Shop Cart
+  .productCesta{grid-template-columns: 40% 60%}
+  .mainCart{margin-left: 70px;}
+}
+
+@media only screen and (min-width: 1000px){
+  //Edit product
+
+
 }
 
 
 @media only screen and (min-width: 1250px){
+  //User profile
+  .mainUser{width: 50%;}
+  .section2{width: 40em; margin-right: 0;}
+
+
+
 }
 
 @media only screen and (min-width: 1300px){
   #productos{grid-template-columns: 25% 25% 25% 25%;}
+  //Product view
+  .imgProduct{max-width: 85%;}
+  //Edit Product
+  .gridedit{grid-template-columns: auto auto}
+  .tableedit{
+    width: 400px!important;
+  }
+  .editmargin{margin-left: 15px!important;}
+  .editcard{width: 100%}
+  .cardedit{margin-right: 0;}
 }
 
 @media only screen and (min-width: 1700px){
   #productos{grid-template-columns: 20% 20% 20% 20% 20%;}
+
+  //Edit Product
+  .gridedit{grid-template-columns: auto auto}
+  .tableedit{
+    width: 400px!important;
+  }
+  .editmargin{margin-left: 15px!important;}
+  .editcard{width: 100%; margin-left: 2em;}
+  .cardedit{margin-right: 0;}
 }
+
 
 
 

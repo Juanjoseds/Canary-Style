@@ -76,10 +76,10 @@
     <% end %>
     <p class="talla"><i class="fas fa-ruler"></i> Tallaje disponible</p>
 
-    <!-- BOTONES TALLA -->
-    <div class="btn-group" role="group" aria-label="Basic example">
+    <!-- BOTON DE TALLAS -->
+    <div class="btn-group" aria-label="Basic example">
       <% @product.talla.each do |tallaje| %>
-        <%= button_to tallaje, savetalla_path, method: :post, params: {talla: tallaje} %>
+        <%= button_to tallaje, savetalla_path, method: :post, params: {talla: tallaje}, class: "btntalla btn btn-outline-dark ml-1" %>
       <% end %>
     </div>
 
