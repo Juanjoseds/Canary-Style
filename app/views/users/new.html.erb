@@ -1,0 +1,67 @@
+<div>
+  <div class="new mt-3">
+    <div class="card">
+      <h5 class="card-header">¡Bienvenido a Canary Style!</h5>
+      <div class="card-body">
+        <h5 class="card-title">Regístrate</h5>
+        <p class="card-text">Bla bla bla</p>
+        <hr>
+
+        <%= form_for @user, url: createuser_path, method: :post do |f| %>
+          <div class="form-group formNew">
+            <p><strong>Nombre:</strong></p>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+          <div class="form-group formNew">
+            <p><strong>Nombre de usuario:</strong></p>
+            <%= f.text_field :username, class: 'form-control' %>
+          </div>
+          <div class="form-group formNew">
+            <p><strong>Contraseña:</strong></p>
+            <%= f.password_field :password, class: 'form-control'%>
+          </div>
+          <hr>
+
+          <div class="form-group formNew">
+            <p><strong>Direccion:</strong></p>
+            <%= f.text_field :direccion, class: 'form-control' %>
+          </div>
+          <div class="form-group formNew">
+            <p><strong>Ciudad:</strong></p>
+            <%= f.text_field :ciudad, class: 'form-control'%>
+          </div>
+          <div class="form-group formNew">
+            <p><strong>País:</strong></p>
+            <%= f.text_field :pais, class: 'form-control'%>
+          </div>
+          <div class="form-group formNew">
+            <p><strong>Teléfono:</strong></p>
+            <%= f.text_field :phone, class: 'form-control'%>
+          </div>
+          <hr>
+          <div class="form-group formNew">
+            <p><strong>Talla de camiseta:</strong></p>
+            <%= f.select :talla_camiseta, options_for_select(%w(XS S M L XL XXL)) %>
+          </div>
+          <div class="form-group formNew">
+            <p><strong>Talla de zapato:</strong></p>
+            <%= f.text_field :talla_pie, class: 'form-control' %>
+          </div>
+          <div class="form-group formNew">
+            <p><strong>Talla de joggins:</strong></p>
+            <%= f.select :talla_chandal, options_for_select(%w(XS S M L XL XXL)) %>
+          </div>
+          <div class="form-group formNew">
+            <p><strong>Talla de pantalón:</strong></p>
+            <%= f.text_field :talla_pantalon, class: 'form-control' %>
+          </div>
+
+          <%= f.submit "Unirte a Canary Style"%>
+        <% end %>
+        <hr>
+
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,6 +13,16 @@ class UsersController < ApplicationController
     index
   end
 
+  def create
+    puts '-------VALE CREANDO---------'
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to main_path
+    else
+      redirect_to request.referer.present? ? request.referer : default_path
+    end
+  end
+
   # ACTUALIZA LOS DATOS DEL USUARIO EN EL SERVIDOR
   def update
     print params[:id]
@@ -82,6 +92,7 @@ class UsersController < ApplicationController
     session[:tallacesta] = nil
     session[:talla_camiseta] = nil
     session[:talla_pie] = nil
+    session[:talla_chandal] = nil
     session[:talla_pantalon] = nil
     redirect_to request.referer.present? ? request.referer : default_path
   end
@@ -90,6 +101,7 @@ class UsersController < ApplicationController
   def carritoadd
     session[:cart].push(params[:id])
     session[:tallacesta].push(session[:talla])
+    session[:talla] = nil
   end
 
   # Borramos el elemento que el usuario ha elegido

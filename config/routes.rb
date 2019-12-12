@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'products/:id/delete', to: 'products#delete'
 
   get '/users', to: 'users#index' # users_path
-  get '/users/new', to: 'users#new' # users_new_path
+  get '/user/new', to: 'users#new' # users_new_path
   post '/:username', to: 'users#login', as: 'login'
   get '/users/login/:username', to: 'users#login'
   get '/users/logout', to: 'users#logout', as: 'logout'
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get '/products/hombre', to: 'products#hombre', as: 'hombre'
   get '/products/mujer', to: 'products#mujer', as: 'mujer'
   post 'products/:id/talla', to: 'products#talla', as: 'savetalla'
-  #PRUEBA
+
   get 'products/:id/talla', to: 'products#talla'
   get 'products/:id/talla/:talla', to: 'products#talla'
   get 'users/deletecarrito/:index', to: 'users#deletecarrito'
@@ -44,6 +44,8 @@ Rails.application.routes.draw do
   get '/products/admin', to: 'products#index', as: 'mainadmin'
   get '/products/:id/edit/upload', to: 'products#upload', as: 'upload'
 
+  get '/user/new', to: 'users#new'
+  post '/user/new/create', to: 'users#create', as: 'createuser'
 
   # resources :products
   # resources :users

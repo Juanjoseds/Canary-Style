@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   def index
     setUser
-    session[:upload] = false
     @products = Product.all
   end
 
@@ -72,16 +71,19 @@ class ProductsController < ApplicationController
     setUser
     @products = Product.all
     @products = Product.order('created_at DESC')
+    session[:talla] = nil
   end
 
   def hombre
     setUser
     @products = Product.all
+    session[:talla] = nil
   end
 
   def mujer
     setUser
     @products = Product.all
+    session[:talla] = nil
   end
 
   def setUser

@@ -25,6 +25,11 @@
      end
   end %>
 
+<%
+#LOGICA DE MEMORIZACIÓN DE TALLA PULSADA
+  @styleclass = "backgroundtalla"
+%>
+
 <div class="toast" id="myToast" data-delay="5000">
   <div class="toast-header">
     <strong class="mr-auto"><i class="fa fa-grav"></i> Añadido al carrito</strong>
@@ -79,7 +84,15 @@
     <!-- BOTON DE TALLAS -->
     <div class="btn-group" aria-label="Basic example">
       <% @product.talla.each do |tallaje| %>
-        <%= button_to tallaje, savetalla_path, method: :post, params: {talla: tallaje}, class: "btntalla btn btn-outline-dark ml-1" %>
+        <% if session[:talla] != nil %>
+          <% if session[:talla] == tallaje %>
+            <%= button_to tallaje, savetalla_path, method: :post, params: {talla: tallaje}, class: "btntalla btn btn-outline-dark ml-1 " + @styleclass %>
+          <% else %>
+            <%= button_to tallaje, savetalla_path, method: :post, params: {talla: tallaje}, class: "btntalla btn btn-outline-dark ml-1"%>
+          <% end %>
+        <% else %>
+          <%= button_to tallaje, savetalla_path, method: :post, params: {talla: tallaje}, class: "btntalla btn btn-outline-dark ml-1"%>
+        <% end %>
       <% end %>
     </div>
 
