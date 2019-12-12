@@ -11,7 +11,6 @@ require("jquery")
 require("packs/methods")
 
 import "bootstrap";
-import "../stylesheets/application"
 
 document.addEventListener("turbolinks:load", () => {
    $('[data-toggle="tooltip"]').tooltip();
