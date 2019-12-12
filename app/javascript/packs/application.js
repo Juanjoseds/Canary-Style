@@ -10,8 +10,6 @@ require("channels")
 require("jquery")
 require("packs/methods")
 
-import "bootstrap";
-
 document.addEventListener("turbolinks:load", () => {
    $('[data-toggle="tooltip"]').tooltip();
    $('[data-toggle="popover"]').tooltip();
