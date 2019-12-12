@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get '/', to: 'welcome#index', as: 'main'
+  root 'welcome#index', as: 'main'
 
   get '/products', to: 'products#index'
   get '/products/new', to: 'products#new'
