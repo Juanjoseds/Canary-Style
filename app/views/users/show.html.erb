@@ -2,15 +2,9 @@
   if session[:option] == 1
     @active1 = 'activeoption'
     @active2 = ''
-    @active3 = ''
   elsif session[:option] == 2
     @active1 = ''
     @active2 = 'activeoption'
-    @active3 = ''
-  elsif session[:option] == 3
-    @active1 = ''
-    @active2 = ''
-    @active3 = 'activeoption'
   end
 %>
 <div class="mainUser">
@@ -26,7 +20,6 @@
           <ul class="list-group list-group-flush" style="cursor: pointer;">
             <li class="list-group-item options <%= @active1 %>" onclick="window.location.href='/users/option1'">Ver</li>
             <li class="list-group-item options <%= @active2 %>" onclick="window.location.href='/users/option2'">Editar</li>
-            <li class="list-group-item options <%= @active3 %>" onclick="window.location.href='/users/option3'">¿Borrar?</li>
           </ul>
         </div>
         <div class="card mt-3">
@@ -58,6 +51,11 @@
             <p><strong>Ciudad:</strong> <%= session[:ciudad] %></p>
             <p><strong>País:</strong> <%= session[:pais] %></p>
             <p><strong>Teléfono:</strong> <%= session[:phone] %></p>
+            <hr>
+            <p><strong>Talla camiseta:</strong> <%= session[:talla_camiseta] %></p>
+            <p><strong>Talla zapato:</strong> <%= session[:talla_pie] %></p>
+            <p><strong>Talla pantalón:</strong> <%= session[:talla_pantalon] %></p>
+            <p><strong>Talla joggin:</strong> <%= session[:talla_chandal] %></p>
           </div>
           <div class="card-footer">
             <small class="text-muted">¿Ves algo incorrecto? Haz clic en editar para modificarlo</small>
